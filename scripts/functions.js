@@ -82,5 +82,6 @@ export {
     getActualDate,
     getNextPayDay,
     workDays,
-    dayWeekCounterBetweenTwoDates
+    dayWeekCounterBetweenTwoDates,
+    startMonth
 }
