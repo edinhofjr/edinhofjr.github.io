@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de VT</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <table class="tabela">
+        <thead>
+            <th>
+                CASA ➨ SX
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Quantidade</td>
+                <td>Valor</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td>&Ocirc;nibus</td>
+                <td><input placeholder="0" id="qtd-bus-sx" class="input" type="number"></td>
+                <td><input placeholder="0" id="valor-bus-sx" class="input" type="number" /></td>
+                <td class="output" total-bus-sx">0</td>
+            </tr>
+            <tr>
+                <td>Trem</td>
+                <td><input placeholder="0" class="input" type="number" /></td>
+                <td><input placeholder="0" class="input" type="number" /></td>
+                <td class="output">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="tabela">
+        <thead>
+            <th>
+                CASA ➨ SENAC
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Quantidade</td>
+                <td>Valor</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td>&Ocirc;nibus</td>
+                <td><input placeholder="0" class="input" type="number" /></td>
+                <td><input placeholder="0" class="input" number" /></td>
+                <td class="output">0</td>
+            </tr>
+            <tr>
+                <td>Trem</td>
+                <td><input placeholder="0" class="input" type="number" /></td>
+                <td><input placeholder="0" class="input" type="number" /></td>
+                <td class="output">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="tabela">
+        <tbody>
+            <tr>
+                <td>DIA DA SEMANA NO SENAC</td>
+                <td>
+                    <select id="phDayWeek">
+                        <option value="1">Segunda</option>
+                        <option value="2">Ter&ccedil;a</option>
+                        <option value="3">Quarta</option>
+                        <option value="4">Quinta</option>
+                        <option value="5">Sexta</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div>
+        <table>
+            <thead>
+                <th>
+                    HOJE ➞ PAGAMENTO
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TRANSPORTE</td>
+                    <td>VALOR</td>
+                </tr>
+
+                <tr>
+                    <td>Onibus</td>
+                    <td class="total">0</td>
+                </tr>
+
+                <tr>
+                    <td>Trem</td>
+                    <td class="total">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <table>
+        <thead>
+            <th>
+                MÊS COMPLETO
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TRANSPORTE</td>
+                <td>VALOR</td>
+            </tr>
+
+            <tr>
+                <td>Onibus</td>
+                <td class="total">0</td>
+            </tr>
+
+            <tr>
+                <td>Trem</td>
+                <td class="total">0</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="module" src="parcialMonth.js">
+    </script>
+</body>
+
+</html>
