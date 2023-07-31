@@ -1,13 +1,22 @@
 import * as def from "./functions.js";
 let today = def.getActualDate();
+let dayweek = document.getElementById('dayweek')
 let payday = def.getNextPayDay(today);
 let workdays = def.workDays(today, payday);
-let classdays = def.dayWeekCounterBetweenTwoDates(today,payday,); // MUDAR TERCEIRO ARGUMENTO QUE É A DATA.
+let classdays = def.dayWeekCounterBetweenTwoDates(today,payday,dayweek.value); // MUDAR TERCEIRO ARGUMENTO QUE É A DATA.
 let jobdays = workdays - classdays
+
+dayweek.onchange = 
+
+function refresh() {
+    classdays = def.dayWeekCounterBetweenTwoDates(today,payday,dayweek.value)
+    classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth,payday,dayweek.value)
+}
+
 
 const startmonth = def.startMonth()
 const workdaysC = def.workDays(startmonth,payday)
-const classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth,payday,1)
+const classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth,payday,dayweek.value)
 let jobdaysC = workdaysC - classdaysC
 
 
