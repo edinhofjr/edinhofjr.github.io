@@ -3,20 +3,18 @@ let today = def.getActualDate();
 let dayweek = document.getElementById('dayweek')
 let payday = def.getNextPayDay(today);
 let workdays = def.workDays(today, payday);
-let classdays = def.dayWeekCounterBetweenTwoDates(today,payday,dayweek.value); // MUDAR TERCEIRO ARGUMENTO QUE É A DATA.
+let classdays = def.dayWeekCounterBetweenTwoDates(today, payday, dayweek.value); // MUDAR TERCEIRO ARGUMENTO QUE É A DATA.
 let jobdays = workdays - classdays
 
-dayweek.onchange = 
-
-function refresh() {
-    classdays = def.dayWeekCounterBetweenTwoDates(today,payday,dayweek.value)
-    classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth,payday,dayweek.value)
-}
-
+dayweek.addEventListener("change", () => {
+    classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth, payday, dayweek.value)
+    classdays = def.dayWeekCounterBetweenTwoDates(today, payday, dayweek.value)
+    refresh()
+})
 
 const startmonth = def.startMonth()
-const workdaysC = def.workDays(startmonth,payday)
-const classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth,payday,dayweek.value)
+const workdaysC = def.workDays(startmonth, payday)
+let classdaysC = def.dayWeekCounterBetweenTwoDates(startmonth, payday, dayweek.value)
 let jobdaysC = workdaysC - classdaysC
 
 
@@ -24,19 +22,24 @@ let qtds = document.querySelectorAll(".inputQTD")
 let tickets = document.querySelectorAll('.inputValue')
 let inputs = document.querySelectorAll('input');
 let outputs = document.querySelectorAll('.output')
-let totals = document.querySelectorAll('.total')
+let totalParcial = document.querySelectorAll(".totalP")
+let totalComplete = document.querySelectorAll(".total")
+
 
 inputs.forEach(input => {
-    input.addEventListener('change', function() {
-        outputs.forEach( (output, x) => {
+    input.addEventListener('change', refresh );
+});
+
+function refresh() {
+    {
+        outputs.forEach((output, x) => {
             outputs[x].innerHTML = (qtds[x].value) * (tickets[x].value)
-            })
-        totals[0].innerHTML = Number(outputs[0].innerHTML)*jobdays +  classdays*Number(outputs[2].innerHTML)
-        totals[1].innerHTML = Number(outputs[1].innerHTML)*jobdays +  classdays*Number(outputs[3].innerHTML)
-        totals[2].innerHTML = Number(outputs[0].innerHTML)*jobdaysC +  classdaysC*Number(outputs[2].innerHTML)
-        totals[3].innerHTML = Number(outputs[1].innerHTML)*jobdaysC +  classdaysC*Number(outputs[3].innerHTML)
-        /*totals.forEach((value, x ) => {
-            totals[x].innerHTML = 
-        })*/
-    });
-  });
+        })
+        totalParcial.forEach((element, i) => {
+            element.innerHTML = Number(outputs[i].innerHTML) * jobdays + classdays * Number(outputs[i + 2].innerHTML)
+        })
+        totalComplete.forEach((element, i) => {
+            element.innerHTML = Number(outputs[i].innerHTML) * jobdaysC + classdaysC * Number(outputs[i+2].innerHTML)
+        })
+    }
+}
