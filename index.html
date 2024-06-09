@@ -144,9 +144,39 @@
     <h1>Exemplo de Caixa de Código</h1>
     <pre class="code-box">
 <code>
-function helloWorld() {
-    console.log("Hello, World!");
-}
+Function FindAllinTable(Table As ListObject, Target As String, SearchColumnINT As Integer) As Variant()
+    Dim ListRows As ListRows
+    Set ListRows = Table.ListRows
+    
+    Dim LR As ListRow
+    Dim R As Range
+    
+    Dim Values() As Variant
+    Dim i As Byte
+    
+    i = 0
+    
+    For Each LR In ListRows
+        If StrComp(LR.Range.Value2(1, SearchColumnINT), Target, vbTextCompare) = 0 Then
+            ReDim Preserve Values(i)
+            
+            Dim value()
+            Dim j As Byte
+            
+            j = LR.Range.Count - 1
+            ReDim value(j)
+            
+            For k = 0 To j
+                value(k) = LR.Range(1, k + 1)
+            Next k
+            
+            Values(i) = value
+            i = i + 1
+        End If
+    Next LR
+    
+    FindAllinTable = Values
+End Function
 </code>
     </pre>
     
