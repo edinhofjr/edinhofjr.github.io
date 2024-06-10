@@ -169,6 +169,55 @@ Function FindAllinTable(Table As ListObject, Target As String, SearchColumnINT A
     
     FindAllinTable = Values
 End Function
+
+    Function FilterVariants(Values As Variant, columnNumbers As Variant) As Variant()
+    Dim accColumn As Byte
+    accColumn = 0
+    For Each V In columnNumbers
+        accColumn = accColumn + 1
+    Next V
+    
+    Dim Filtered()
+    Dim i As Byte
+    i = 0
+    
+    Dim j As Byte
+    j = 0
+    Dim Var As Variant
+    For Each Var In Values
+        ReDim Preserve Filtered(i)
+        Dim newValue()
+        ReDim newValue(0 To accColumn - 1)
+        
+        For j = 0 To accColumn - 1
+            newValue(j) = Var(columnNumbers(j))
+        Next j
+        Filtered(i) = newValue
+        i = i + 1
+    Next Var
+    
+    FilterVariants = Filtered
+End Function
+
+Function FilterVariant(Vars As Variant, columnNumber As Variant) As Variant()
+    Dim accColumn As Byte
+    accColumn = 0
+    For Each c In columnNumber
+        accColumn = accColumn + 1
+    Next c
+    
+    Dim Filtered()
+    ReDim Filtered(accColumn - 1)
+    
+    Dim i As Byte
+    i = 0
+    For Each c In columnNumber
+        Filtered(i) = Vars(columnNumber(i))
+        i = i + 1
+    Next c
+    FilterVariant = Filtered
+End Function
+
 </code>
     </pre>
     
